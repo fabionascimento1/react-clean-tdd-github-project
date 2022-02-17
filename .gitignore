@@ -2,3 +2,4 @@ node_modules
 public/js
 .vscode
 dist
+coverage
