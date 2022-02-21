@@ -1,4 +1,5 @@
 import { HttpGetClient } from '@/data/protocols/http/http-get-client'
+import { GetRepositoriesParams } from '@/domain/usecases/get-repositories'
 
 export class RemoteRepositories {
   constructor (
@@ -6,9 +7,10 @@ export class RemoteRepositories {
     private readonly httpGetClient: HttpGetClient
   ) {}
 
-  async search (): Promise<void> {
+  async search (params: GetRepositoriesParams): Promise<void> {
     await this.httpGetClient.get({
-      url: this.url
+      url: this.url,
+      name: params.name
     })
   }
 }
