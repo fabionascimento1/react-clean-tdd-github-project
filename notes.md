@@ -1,7 +1,3 @@
-RemoteAuthentication recebe URL e os dados (email, password) e possui o metodo auth: fazer a autenticação.
-
-Usecase Authentication recebe uma abstração chamado http-client (interface e metodo) onde a camada de Infraestrutura iremos decidir qual serviço (axios ou fecth) será usado.
-
 ## Tests
 
 sut = é objecto que estamos testando
