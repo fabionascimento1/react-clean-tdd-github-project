@@ -4,9 +4,16 @@ sut = é objecto que estamos testando
 Spy = mock
 Biblioteca Faker para mockar valores
 
-# Test RemoteAuthentication
+# Test RemoteRepositories
 
 ## 1 Should call HttpPostClient with corret URL
+
+Testar que meu HttpGetClient chame URL correta! ou seja que minha interface HttpGetClient que possui metodo Get chame URL correta.
+
+Aonde se compara: classe de produção (SUT) com os valores mocados (SPY).
+
+- Instancie a classe de produção (SUT);
+- Compare Spy com a url passada no test;
 
 - crie uma classe RemoteAuthentication onde no construtor ele receba: URL e HttpPostClient(possui metodo auth que recebe URL: string e retorna void);
 - crie um Spy da class RemoteAuthentication que implementa interface HttpPostClient;

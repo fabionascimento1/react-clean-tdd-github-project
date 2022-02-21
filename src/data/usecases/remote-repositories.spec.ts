@@ -1,3 +1,4 @@
+/* import { GetRepositoriesParams } from '@/domain/usecases/get-repositories' */
 import { HttpGetClientSpy } from '../test/mock-http-get-client'
 import { RemoteRepositories } from './remote-repositories'
 
@@ -15,6 +16,10 @@ const makeSut = (url: string = 'any_url'): SutTypes => {
   }
 }
 
+/* const mockRepositories = (): GetRepositoriesParams => ({
+  name: 'fabionascimento1'
+}) */
+
 describe('RemoteRepositories', () => {
   test('should be HttpGetClient with correct URL ', async () => {
     const url = 'other_url'
@@ -22,4 +27,11 @@ describe('RemoteRepositories', () => {
     await sut.search()
     expect(httpGetClientSpy.url).toBe(url)
   })
+
+  /* test('should be HttGetClient with correct params', async () => {
+    const getRepositoryParams = mockRepositories()
+    const { sut, httpGetClientSpy } = makeSut()
+    await sut.search(getRepositoryParams)
+    expect(httpGetClientSpy.get.name).toEqual(getRepositoryParams)
+  }) */
 })

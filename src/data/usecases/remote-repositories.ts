@@ -7,6 +7,8 @@ export class RemoteRepositories {
   ) {}
 
   async search (): Promise<void> {
-    await this.httpGetClient.get(this.url)
+    await this.httpGetClient.get({
+      url: this.url
+    })
   }
 }
