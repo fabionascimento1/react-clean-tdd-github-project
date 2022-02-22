@@ -1,6 +1,7 @@
 import { HttpGetClientSpy } from '@/data/test/mock-http-get-client'
 import { mockRepositories } from '@/data/test/mock-repositories'
 import { InvalidCredentialsError } from '@/domain/errors/invalid-credentials-error'
+import { UnexpectedError } from '@/domain/errors/unexpected-error'
 import { HttpStatusCode } from '../protocols/http/http-response'
 import { RemoteRepositories } from './remote-repositories'
 
@@ -40,5 +41,14 @@ describe('RemoteRepositories', () => {
     }
     const promise = sut.search(mockRepositories())
     await expect(promise).rejects.toThrow(new InvalidCredentialsError())
+  })
+
+  test('should be throw UnexpectedError if HttGetClient returns 400', async () => {
+    const { sut, httpGetClientSpy } = makeSut()
+    httpGetClientSpy.response = {
+      statusCode: HttpStatusCode.badRequest
+    }
+    const promise = sut.search(mockRepositories())
+    await expect(promise).rejects.toThrow(new UnexpectedError())
   })
 })
