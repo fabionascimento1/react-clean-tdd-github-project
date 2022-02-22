@@ -1,0 +1,16 @@
+@import "../../presentation/styles/colors.scss";
+
+.header {
+  background-color: $primary;
+  display: flex;
+  padding: 16px 0;
+
+  .form {
+    text-align: center;
+    margin-left: 16px;
+    display: flex;
+  }
+  button {
+    margin-left: 10px;
+  }
+}
