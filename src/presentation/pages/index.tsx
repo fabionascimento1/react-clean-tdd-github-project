@@ -1,4 +1,5 @@
 import React from 'react'
+import Input from '../components/input'
 import Logo from '../components/logo'
 import Spinner from '../components/spinner'
 import Styles from './index-styles.scss'
@@ -9,7 +10,7 @@ const Index: React.FC = () => {
       <header className={Styles.header}>
         <Logo />
         <form className={Styles.form}>
-          <input type='text' name='repository' placeholder='Procurar por repositório ...' />
+         <Input type='text' name='repository' placeholder='Procurar por repositório ...' />
           <button type='submit'>Pesquisar</button>
         </form>
         <div className={Styles.errorWrap}>

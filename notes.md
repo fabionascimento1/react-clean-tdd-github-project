@@ -13,7 +13,7 @@ Testar que meu HttpGetClient chame URL correta! ou seja que minha interface Http
 Aonde se compara: classe de produção (SUT) com os valores mocados (SPY).
 
 - Instancie a classe de produção (SUT);
-- Compare Spy com a url passada no test;
+- Compare Spy.url com a url passada no test;
 
 - crie uma classe RemoteAuthentication onde no construtor ele receba: URL e HttpPostClient(possui metodo auth que recebe URL: string e retorna void);
 - crie um Spy da class RemoteAuthentication que implementa interface HttpPostClient;
@@ -27,5 +27,12 @@ Aonde se compara: classe de produção (SUT) com os valores mocados (SPY).
 - Adicione paramentros RemoteAuthentication onde passa a receber body com parametro;
 
 \*\* Data layer esta no meio do domain e infraestrutura
+
+## Tratando respostas da api ( success e error )
+
+Data/protocols é camada intermediadora entre model e a Infra, responsavel por passar paramentros e tratar a resposta;
+
+- Crie type/interface do retorno a ser tratado;
+- Repasse type/interface como retorno da requisicao;
 
 \*\* tests para rebecer as respostas (error http: 401, 200, 400 ...) do httpPostClient
