@@ -5,8 +5,8 @@ import Styles from './input-styles.scss'
 type Props = React.InputHTMLAttributes<HTMLInputElement>
 
 const Input: React.FC<Props> = (props: Props) => {
-  const value = useContext(Context)
-  const error: string = value[`${props.name}Error`]
+  const { state, setState } = useContext(Context)
+  const error = state[`${props.name}Error`]
 
   const getStatus = (): string => {
     return '🔴'
@@ -14,9 +14,15 @@ const Input: React.FC<Props> = (props: Props) => {
   const getTitle = (): string => {
     return error
   }
+  const handleChange = (event: React.FocusEvent<HTMLInputElement>): void => {
+    setState({
+      ...state,
+      [event.target.name]: event.target.value
+    })
+  }
   return (
     <div className={Styles.inputWrap}>
-       <input {...props} />
+       <input {...props} data-testid={props.name} onChange={handleChange} />
        <span title={getTitle()} data-testid='search-status' className={Styles.status}>{getStatus()}</span>
     </div>
   )
