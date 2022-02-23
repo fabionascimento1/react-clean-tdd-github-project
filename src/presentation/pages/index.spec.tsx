@@ -9,5 +9,8 @@ describe('', () => {
     expect(errorWrap.childElementCount).toBe(0)
     const submitButton = getByTestId('submit') as HTMLButtonElement
     expect(submitButton.disabled).toBe(true)
+    const searchStatus = getByTestId('search-status')
+    expect(searchStatus.title).toBe('Campo obrigatório')
+    expect(searchStatus.textContent).toBe('🔴')
   })
 })
