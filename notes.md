@@ -36,3 +36,11 @@ Data/protocols é camada intermediadora entre model e a Infra, responsavel por p
 - Repasse type/interface como retorno da requisicao;
 
 \*\* tests para rebecer as respostas (error http: 401, 200, 400 ...) do httpPostClient
+
+## testes formulario
+
+# 1 - Garantir que alguns componentes nao sejam renderizados quando iniciar a aplicação
+
+Para isso é preciso criar um state e atraves do context é possivel passar o valor para os filhos.
+
+# 2 - Garantir que botao pesquisar repositorio esteja desabilitado até que Input esteja em branco

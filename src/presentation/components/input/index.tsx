@@ -6,7 +6,7 @@ type Props = React.InputHTMLAttributes<HTMLInputElement>
 
 const Input: React.FC<Props> = (props: Props) => {
   const value = useContext(Context)
-  const error = value['searchError']
+  const error: string = value[`${props.name}Error`]
 
   const getStatus = (): string => {
     return '🔴'
