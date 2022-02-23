@@ -12,5 +12,17 @@
   }
   button {
     margin-left: 10px;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:disabled {
+      background-color: $disabledColor;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }

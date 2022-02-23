@@ -6,17 +6,12 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  border: 0;
 }
 
 input[type="password"],
 input[type="email"] {
   &:focus {
     outline-color: $primaryDark;
-  }
-}
-
-button {
-  &:hover {
-    opacity: 0.9;
   }
 }

@@ -15,7 +15,6 @@ const Index: React.FC = () => {
     isLoading: false,
     errorMessage: ''
   })
-
   return (
     <>
       <header className={Styles.header}>
@@ -23,7 +22,7 @@ const Index: React.FC = () => {
         <Context.Provider value={state}>
           <form className={Styles.form}>
           <Input type='text' name='repository' placeholder='Procurar por repositório ...' />
-            <button type='submit'>Pesquisar</button>
+            <button data-testid='submit' disabled type='submit'>Pesquisar</button>
           </form>
           <FormStatus />
         </Context.Provider>
