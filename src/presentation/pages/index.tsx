@@ -19,7 +19,10 @@ const Index: React.FC<Props> = ({ validation }: Props) => {
   })
 
   useEffect(() => {
-    validation.validate('search', state.search)
+    setState({
+      ...state,
+      searchError: validation.validate('search', state.search)
+    })
   }, [state.search])
 
   return (
