@@ -10,10 +10,12 @@ type SutTypes = {
 
 class ValidationSpy implements Validation {
   errorMessage: string
-  input: object
+  fieldName: string
+  fieldValue: string
 
-  validate (input: object): string {
-    this.input = input
+  validate (fieldName: string, fieldValue: string): string {
+    this.fieldName = fieldName
+    this.fieldValue = fieldValue
     return this.errorMessage
   }
 }
@@ -44,9 +46,8 @@ describe('', () => {
   test('Should call validation with correct value', () => {
     const { sut, validationSpy } = makeSut()
     const searchInput = sut.getByTestId('search')
-    fireEvent.input(searchInput, { target: { value: 'any' } })
-    expect(validationSpy.input).toEqual({
-      search: 'any'
-    })
+    fireEvent.input(searchInput, { target: { value: 'any_search' } })
+    expect(validationSpy.fieldName).toBe('search')
+    expect(validationSpy.fieldValue).toBe('any_search')
   })
 })

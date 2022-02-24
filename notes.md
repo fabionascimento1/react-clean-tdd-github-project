@@ -37,10 +37,14 @@ Data/protocols é camada intermediadora entre model e a Infra, responsavel por p
 
 \*\* tests para rebecer as respostas (error http: 401, 200, 400 ...) do httpPostClient
 
-## testes formulario
+## testes formulario Pesquisar repositorio
 
-# 1 - Garantir que alguns componentes nao sejam renderizados quando iniciar a aplicação
-
-Para isso é preciso criar um state e atraves do context é possivel passar o valor para os filhos.
+# 1 - Garantir que alguns componentes nao sejam renderizados quando iniciar a aplicação como por exemplo Error Message e Spinner
 
 # 2 - Garantir que botao pesquisar repositorio esteja desabilitado até que Input esteja em branco
+
+# 3 - Garantir que statusError tenha state correto: Title === (campo obrigatório) e content === 🔴
+
+## --- Refactor criando makeSut
+
+# 4 - Call Validation com os valores corretos
