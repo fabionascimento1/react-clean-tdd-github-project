@@ -48,4 +48,14 @@ describe('', () => {
     expect(searchStatus.title).toBe(validationSpy.errorMessage)
     expect(searchStatus.textContent).toBe('🔴')
   })
+
+  test('Should show valid search state if Validation succeeds', () => {
+    const { sut, validationSpy } = makeSut()
+    validationSpy.errorMessage = null
+    const searchInput = sut.getByTestId('search')
+    fireEvent.input(searchInput, { target: { value: 'any_search' } })
+    const searchStatus = sut.getByTestId('search-status')
+    expect(searchStatus.title).toBe('Tudo certo!')
+    expect(searchStatus.textContent).toBe('🟢')
+  })
 })
