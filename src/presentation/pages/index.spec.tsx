@@ -10,6 +10,7 @@ type SutTypes = {
 
 const makeSut = (): SutTypes => {
   const validationSpy = new ValidationSpy()
+  validationSpy.errorMessage = 'Error Message'
   const sut = render(<Index validation={validationSpy} />)
   return {
     sut,
@@ -21,13 +22,13 @@ describe('', () => {
   afterEach(cleanup)
 
   test('Should start render with initial state', () => {
-    const { sut } = makeSut()
+    const { sut, validationSpy } = makeSut()
     const errorWrap = sut.getByTestId('error-wrap')
     expect(errorWrap.childElementCount).toBe(0)
     const submitButton = sut.getByTestId('submit') as HTMLButtonElement
     expect(submitButton.disabled).toBe(true)
     const searchStatus = sut.getByTestId('search-status')
-    expect(searchStatus.title).toBe('Campo obrigatório')
+    expect(searchStatus.title).toBe(validationSpy.errorMessage)
     expect(searchStatus.textContent).toBe('🔴')
   })
 
@@ -37,5 +38,14 @@ describe('', () => {
     fireEvent.input(searchInput, { target: { value: 'any_search' } })
     expect(validationSpy.fieldName).toBe('search')
     expect(validationSpy.fieldValue).toBe('any_search')
+  })
+
+  test('Should show search error if Validation fails', () => {
+    const { sut, validationSpy } = makeSut()
+    const searchInput = sut.getByTestId('search')
+    fireEvent.input(searchInput, { target: { value: 'any_search' } })
+    const searchStatus = sut.getByTestId('search-status')
+    expect(searchStatus.title).toBe(validationSpy.errorMessage)
+    expect(searchStatus.textContent).toBe('🔴')
   })
 })
